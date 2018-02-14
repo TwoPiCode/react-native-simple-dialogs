@@ -1,25 +1,25 @@
 /**
 * MIT License
-* 
+*
 * Copyright (c) 2017 Douglas Nassif Roma Junior
-* 
+*
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
 * in the Software without restriction, including without limitation the rights
 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 * copies of the Software, and to permit persons to whom the Software is
 * furnished to do so, subject to the following conditions:
-* 
+*
 * The above copyright notice and this permission notice shall be included in all
 * copies or substantial portions of the Software.
-* 
+*
 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE. 
+* SOFTWARE.
 */
 
 import React, { Component } from 'react'
@@ -42,7 +42,7 @@ class Dialog extends Component {
 
         return (
             <View style={[{
-                width: '100%',
+                alignSelf: 'stretch',
                 padding: 24,
                 paddingTop: 20
             }, contentStyle]}>
@@ -76,7 +76,7 @@ class Dialog extends Component {
         const containerStyle = OS === 'ios' ?
             {} :
             {
-                width: '100%',
+                alignSelf: 'stretch',
                 paddingLeft: 24,
                 paddingRight: 8,
                 paddingTop: 8,
@@ -92,12 +92,12 @@ class Dialog extends Component {
     }
 
     _renderOutsideTouchable(onTouch) {
-        const view = <View style={{ flex: 1, width: '100%' }} />
+        const view = <View style={{ flex: 1, alignSelf: 'stretch' }} />
 
         if (!onTouch) return view;
 
         return (
-            <TouchableWithoutFeedback onPress={onTouch} style={{ flex: 1, width: '100%' }}>
+            <TouchableWithoutFeedback onPress={onTouch} style={{ flex: 1, alignSelf: 'stretch' }}>
                 {view}
             </TouchableWithoutFeedback>
         )
@@ -132,7 +132,7 @@ class Dialog extends Component {
 
                     <View style={[{
                         backgroundColor: dialogBackgroundColor,
-                        width: '100%',
+                        alignSelf: 'stretch',
                         shadowOpacity: 0.24,
                         borderRadius: dialogBorderRadius,
                         elevation: 4,
@@ -156,23 +156,6 @@ class Dialog extends Component {
             </Modal>
         )
     }
-}
-
-Dialog.propTypes = {
-    dialogStyle: ViewPropTypes.style,
-    contentStyle: ViewPropTypes.style,
-    buttonsStyle: ViewPropTypes.style,
-    overlayStyle: ViewPropTypes.style,
-    buttons: PropTypes.element,
-    visible: PropTypes.bool,
-    animationType: Modal.propTypes.animationType,
-    onRequestClose: PropTypes.func,
-    onShow: PropTypes.func,
-    onOrientationChange: Modal.propTypes.onOrientationChange,
-    onTouchOutside: PropTypes.func,
-    supportedOrientations: Modal.propTypes.supportedOrientations,
-    title: PropTypes.string,
-    titleStyle: Text.propTypes.style
 }
 
 Dialog.defaultProps = {
